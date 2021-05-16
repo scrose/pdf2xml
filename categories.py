@@ -7,106 +7,157 @@ Created on Sat May  4 21:43:26 2019
 """
 
 import lxml.etree as et
+from params import params
 
-def extract_concepts(concepts, acm_ccs_file):
-    
-    # get ACM classification categories
-    ccs2012 = et.parse(acm_ccs_file).getroot()
-    nsmap = {'skos':'http://www.w3.org/2004/02/skos/core#', 'rdf':'http://www.w3.org/1999/02/22-rdf-syntax-ns#'}
-             
-    print("Adding CCS 2012 Concepts: ", concepts)
 
-    concept_id = ''
-    concept_desc = ''
-    concept_significance = 500
-    concept_id_array = []
-    
-    concepts = [c.strip() for c in concepts]
-    concept_desc = '~'.join(concepts)
-    bottom_concepts = []
-    
-    top_concept_candidates = [concepts[0], concepts[0].replace('-',' ').lower()]
-    bottom_concept_candidates = [concepts[-1], concepts[-1].replace('-',' ').lower()]
-    
-    # test possible variations of top concept
-    for top_cpt_candidate in top_concept_candidates:
-        top_concept = ccs2012.xpath('.//skos:prefLabel[text()="' + top_cpt_candidate +'"]/..', namespaces=nsmap)
-        top_concept_alt = ccs2012.xpath('.//skos:altLabel[text()="' + top_cpt_candidate +'"]/..', namespaces=nsmap)
-        if top_concept:
-            top_concept_id = get_concept_id(top_concept[0], nsmap)
-            break
-        elif top_concept_alt:
-            top_concept_id = get_concept_id(top_concept_alt[0], nsmap)
-            break
-    
-    # test possible variations of bottom concept
-    for bottom_cpt_candidate in bottom_concept_candidates:
-        # Retrieve broadest and narrowes concepts
-        bottom_concept = ccs2012.xpath('.//skos:prefLabel[text()="' + bottom_cpt_candidate +'"]/..', namespaces=nsmap)
-        bottom_concept_alt = ccs2012.xpath('.//skos:altLabel[text()="' + bottom_cpt_candidate +'"]/..', namespaces=nsmap)
-        if bottom_concept:
-            bottom_concepts += bottom_concept
-        if bottom_concept_alt:
-            bottom_concepts += bottom_concept_alt
+class CCS:
 
-    if top_concept and len(bottom_concepts):
-        for bottom_concept in bottom_concepts:
-            concept_id_array=[]
-            if (get_concepts(ccs2012, nsmap, bottom_concept, top_concept_id, concept_id_array)):
-                print("Confirmed: Valid path")
-                concept_id_array.append(get_concept_id(bottom_concept, nsmap))
-                concept_id = '.'.join(concept_id_array).replace('#','')
-                print(concept_id, concept_desc, concept_significance)
-                return concept_id, concept_desc, concept_significance
-            else:
-                print("Abort: Not a valid skos path")
-                return None, None, None
+    def __init__(self):
+        # load ACM classification categories
+        self.skos = et.parse(params.get_path("CCS2012", "taxonomy")).getroot()
+        # CCS2012 taxonomy namespace mapping
+        self.nsmap = {
+            'skos': 'http://www.w3.org/2004/02/skos/core#',
+            'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+        }
+        # get list of top concepts
+        self.valid_top_concepts = \
+            self.skos.xpath('//skos:ConceptScheme/skos:hasTopConcept/@rdf:resource', namespaces=self.nsmap)
+        self.cat_index = et.parse(params.get_path("acm", "taxonomy")).getroot()
+        self.logger = []
 
-    else:
-        print('Inputed CCS 2012 concepts are not valid.')
-    return None, None, None
+    def lookup(self, concepts):
 
-# --------------------------------------------
-def get_concepts(root, nsmap, current_concept, top_concept_id, concept_id_array):
+        # clear logs
+        self.clear_logs()
 
-    nsmap = {'skos':'http://www.w3.org/2004/02/skos/core#', 'rdf':'http://www.w3.org/1999/02/22-rdf-syntax-ns#'}
-    current_concept_id = get_concept_id(current_concept, nsmap)
-    broader_concept_ids = get_broader_ids(current_concept, nsmap)
+        if len(concepts) == 0:
+            return None, None, None, self.logger
 
-    #print("Top: ", top_concept_id, "Current: ", current_concept_id, "Broader: ", broader_concept_ids)
+        # initialize
+        top_concept_id = None
+        bottom_concepts = []
+        concept_significance = 500  # default weight
 
-    # at top of concept taxonomy
-    if (len(broader_concept_ids) == 0):
-        return current_concept_id == top_concept_id
+        # clean raw concept text extraction
+        concept_desc = '~'.join(concepts)
 
-    # recursion on broader concepts
-    else:
-        for c_id in broader_concept_ids:
-            resource = get_concept(c_id, root, nsmap)
-            if (get_concepts(root, nsmap, resource, top_concept_id, concept_id_array)):
-                concept_id_array.append(c_id)
-                return True
+        # list alternates of top and bottom concepts
+        top_concept_candidates = [concepts[0], concepts[0].lower(), concepts[0].lower().capitalize()]
+        bottom_concept_candidates = [concepts[-1], concepts[-1].lower(), concepts[-1].lower().capitalize()]
 
-# --------------------------------------------
-def get_concept_id(concept, nsmap):
-    concepts = concept.xpath('@rdf:about', namespaces=nsmap)
-    return concepts[0] if concepts else None
+        self.log("Top concept candidates", top_concept_candidates)
+        self.log("Bottom concept candidates", bottom_concept_candidates)
 
-# --------------------------------------------
-def get_concept(concept_id, root, nsmap):
-    concept = root.xpath('.//skos:Concept[@rdf:about="' + concept_id + '"]', namespaces=nsmap)
-    return concept[0] if (concept) else None
+        # test possible variations of top concept
+        for top_cpt_candidate in top_concept_candidates:
+            top_concepts = \
+                self.skos.xpath('//*[contains(text(), "' + top_cpt_candidate + '")]/..', namespaces=self.nsmap)
+            for top_concept in top_concepts:
+                if self.get_concept_id(top_concept) in self.valid_top_concepts:
+                    top_concept_id = self.get_concept_id(top_concept)
+                    break
+            if top_concept_id:
+                break
 
-# --------------------------------------------
-def get_broader_ids(concept, nsmap):
-    concept_ids = []
-    broader_concepts = concept.xpath('skos:broader/@rdf:resource', namespaces=nsmap)
-    for c_id in broader_concepts:
-        concept_ids.append(c_id)
-    return concept_ids
+        if not top_concept_id:
+            self.log('Top concept invalid')
+            return None, None, None, self.logger
+        else:
+            self.log("Top concept validated", top_concept_id)
 
-# --------------------------------------------
-def get_category(cat_node, acm_cat_file):
-    
-    cat_index = et.parse(acm_cat_file).getroot()
-    return cat_index.xpath('/categories/category[cat_node="' + cat_node + '"]/name/text()')[0]
+        # test variations of bottom concept
+        for bottom_cpt_candidate in bottom_concept_candidates:
+            # Retrieve broadest and narrows concepts
+            bottom_concepts += \
+                self.skos.xpath('//*[contains(text(), "' + bottom_cpt_candidate + '")]/..', namespaces=self.nsmap)
+
+        if not bottom_concepts:
+            self.log('Bottom concepts invalid')
+            return None, None, None, self.logger
+        else:
+            bottom_concept_ids = [self.get_concept_id(c) for c in bottom_concepts]
+            self.log("Bottom concepts validated", bottom_concept_ids)
+
+        # Find possible node paths from bottom to top concepts
+        for bottom_concept_id in bottom_concept_ids:
+            concept_path = self.get_path(top_concept_id, [bottom_concept_id])
+            if concept_path:
+                # Get path description
+                concept_path_desc = []
+                for concept_id in concept_path:
+                    concept_path_desc += [self.get_concept_desc(concept_id)]
+                concept_desc = "~".join(concept_path_desc)
+                concept_id = '.'.join(concept_path).replace('#', '')
+                return concept_id, concept_desc, concept_significance, self.logger
+        self.log("Abort: Not a valid CSS concept path")
+        return None, None, None, self.logger
+
+    # --------------------------------------------
+    # DFS concept paths from current concept to top concept
+    def get_path(self, top_concept_id, concept_path):
+        if concept_path is None or len(concept_path) == 0:
+            return None
+        # front item is current ID
+        current_concept_id = concept_path[0]
+        # concepts up the tree
+        broader_concept_ids = self.get_broader_ids(self.get_concept(current_concept_id))
+        self.log("Top: {}, Current: {}, Broader: {}, Path: {}".format(
+            top_concept_id, current_concept_id, broader_concept_ids, concept_path))
+
+        # found top concept ID
+        if current_concept_id == top_concept_id:
+            return concept_path
+
+        # recursively test broader concepts
+        for broader_concept_id in broader_concept_ids:
+            test_path = [broader_concept_id] + concept_path
+            self.log("Testing path: {}".format(test_path))
+            test_result = self.get_path(top_concept_id, test_path)
+            self.log("Result: {}".format(test_result))
+            if test_result:
+                return test_result
+
+        # concept path not found
+        return None
+
+    # --------------------------------------------
+    def get_concept_id(self, concept):
+        concept_id = concept.xpath('@rdf:about', namespaces=self.nsmap)
+        return concept_id[0] if id else None
+
+    # --------------------------------------------
+    def get_concept(self, concept_id):
+        concept = self.skos.xpath('.//skos:Concept[@rdf:about="' + concept_id + '"]', namespaces=self.nsmap)
+        return concept[0] if concept else None
+
+    # --------------------------------------------
+    def get_broader_ids(self, concept):
+        return concept.xpath('.//skos:broader/@rdf:resource', namespaces=self.nsmap)
+
+    # --------------------------------------------
+    def get_concept_desc(self, concept_id):
+        concept = self.get_concept(concept_id)
+        concept_desc = concept.xpath('.//skos:prefLabel/text()', namespaces=self.nsmap)[0]
+        return concept_desc if concept_desc else None
+
+    # --------------------------------------------
+    def get_category(self, cat_node):
+        cat = self.cat_index.xpath('/categories/category[cat_node="' + cat_node + '"]/name/text()')
+        if len(cat) > 0:
+            return cat[0]
+        else:
+            return ''
+
+    # ----------------------------------------
+    # log issues
+    def log(self, message, data=None):
+        self.logger.append((message, data))
+
+    # ----------------------------------------
+    # clear log records
+    def clear_logs(self):
+        self.logger = []
+
+
+ccs = CCS()

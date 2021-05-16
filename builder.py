@@ -2,188 +2,124 @@
 
 """
 ===========================================
-XML data builder
+XML builder
 ===========================================
-Assimilates CSV and PDF raw data into ACM DL XML metadata
+Converts JSON metadata to schematized XML
 """
-
-import glob
-import json
-import re
+import lxml
 import lxml.etree as et
-from params import params, Phases
+from params import params, Schema
+import utils
+
 
 class XMLBuilder:
 
     def __init__(self):
         self.parser = et.XMLParser(remove_blank_text=True)
-
-        # create base XML from template
-        self.root = et.parse(params.get_path('template'), self.parser).getroot()
-
-        # initialize tree
-        self.tree = None
+        # initialize schema
+        if params.schema:
+            print('Initializing builder schema...'.format(params.schema), end='')
+            if params.schema == Schema.BITS:
+                self.schema = lxml.etree.XMLSchema(et.parse(params.get_path("bits", "schema")))
+            elif params.schema == Schema.DATACITE:
+                self.schema = lxml.etree.XMLSchema(et.parse(params.get_path("datacite", "schema")))
+            elif params.schema == Schema.WORDPRESS:
+                self.schema = lxml.etree.XMLSchema(et.parse(params.get_path("wordpress", "schema")))
+            print('done.')
 
     # ----------------------------------------
-    # Recursively build using JSON object as DOM tree
+    # Build XML from metadata (JSON-format)
     def build(self, data):
-        tree = et.Element('content')
-        self._build_node(data, tree)
-        self.tree = tree
+        root = et.Element('root')
+        # convert JSON metadata -> XML
+        self._build_node(data, root)
+        return root
+
     # ----------------------------------------
-    # Build XML node
+    # Build XML node (helper function)
     def _build_node(self, data, tree):
         # list subtree
         if data and type(data) == list:
-            # check if descendents
-            # copy parent tagname then remove parent element
-            tag_name = tree.tag
-            tree_parent = tree.getparent()
-            tree_parent.remove(tree)
-            tree = tree_parent
             for e in data:
                 if e:
-                    node = et.SubElement(tree, tag_name)
+                    # create new element to contain sub-elements
+                    node = et.SubElement(tree, params.element_name)
                     # text or empty value
                     if type(e) == str:
-                        self.process_value(e, node)
+                        utils.process(e, node)
                     # node value
                     else:
                         self._build_node(e, node)
         # dict subtree
         elif data and type(data) == dict:
             for k, e in data.items():
-                # include selected empty nodes
-                if k in params.empty_nodes:
-                    et.SubElement(tree, str(k))
+                # empty nodes
+                if not e:
+                    # include selected empty nodes
+                    if type(params.empty_nodes) == list:
+                        if k in params.empty_nodes:
+                            et.SubElement(tree, str(k))
+                    # include all empty nodes
+                    elif params.empty_nodes == 'any':
+                        et.SubElement(tree, str(k))
+                    else:
+                        continue
                 # non-empty nodes
-                elif e:
+                else:
                     node = et.SubElement(tree, str(k))
                     # text or empty value
                     if type(e) == str or type(e) == int:
-                        self.process_value(e, node)
+                        utils.process(e, node)
                     # node value
                     else:
                         self._build_node(e, node)
 
-
-    # ----------------------------------------
-    # process terminal node text values
-    def process_value(self, val, node):
-        if (val):
-            # val = h.unescape(val)
-            if (node.tag=='article_type'):
-                node.set('art_type', "regular_article")
-                return
-            # encode uris
-            elif (node.tag =='publisher_article_url' or \
-                node.tag == 'publisher_url' or node.tag == 'conference_url' or node.tag == 'url'):
-                node.text = val.replace("&", "%26")
-                return
-            # elif ( node.tag =='display_no' ):
-            #     node.text = ''
-            #     return
-            elif (node.tag=='qualifiers'):
-                node.getparent().set(node.tag,val)
-                return
-            node.text = str(val)
-        return
-
-
     # ----------------------------------------
     # remove empty nodes from output tree
-    def remove_empty(self):
+    def remove_empty(self, tree):
         # nodes that are recursively empty
-        context = et.iterwalk(self.root)
+        context = et.iterwalk(tree)
         for action, node in context:
             parent = node.getparent()
-            if self.recursively_empty(node):
+            if self._recursively_empty(node):
                 parent.remove(node)
+        return tree
+
     # ----------------------------------------
-    def recursively_empty(self, node):
+    # Remove empty nodes from node tree (helper function)
+    def _recursively_empty(self, node):
         if node.text or node.tag in params.empty_nodes:
             return False
-        return all((self.recursively_empty(c) for c in node.iterchildren()))
+        return all((self._recursively_empty(c) for c in node.iterchildren()))
 
-
-    # ----------------------------------------
-    # validate document against DTD provided
-    def validate(self):
-        dtd = et.DTD(params.get_path('dtd'))
-        result = 'VALID' if dtd.validate(self.root) else 'NOT VALID'
-        print("\n\nDTD Validation Result: {}\n-------------------".format(result))
-        if (len(dtd.error_log.filter_from_errors())):
-            print(dtd.error_log.filter_from_errors()[0])
-
-
-    # ----------------------------------------
-    # print xml to stdout
-    def print(self):
-        print(et.tostring(self.root, xml_declaration=True, pretty_print=True, doctype='<!DOCTYPE proceeding SYSTEM "proceeding.dtd">'))
-
-
-
-    # ----------------------------------------
-    # write XML tree to file (params.path)
-    def save(self):
-        outfile = params.outfile
-        print("Writing XML tree to outpath file path: {}".format(outfile))
+    # --------------------------------------
+    # Apply input XSLT template (see paths.json)
+    def transform(self, xml_data, xslt_path):
+        # load configured XSLT stylesheet
+        xslt_root = et.parse(xslt_path)
+        _transform_ = et.XSLT(xslt_root)
+        # xml = et.parse(xml_data, parser=self.parser).getroot()
+        result = None
         try:
-            with open(outfile, "w", encoding="utf-8") as fp:
-                print("Processing character corrections ... ", end='')
-                content = self.clean_up(et.tostring(self.root,
-                                           encoding='ascii',
-                                           xml_declaration=False,
-                                           pretty_print=True,
-                                           doctype='<!DOCTYPE proceeding SYSTEM "proceeding.dtd">').decode())
-                print("done.")
+            result = _transform_(xml_data)
+        except:
+            for error in _transform_.error_log:
+                print(error.message, error.line)
 
-                print("Saving to file {} ... ".format(outfile), end='')
-                fp.write(content)
-                fp.close()
-                print("done.")
-
-                # validate xml against dtd
-                builder.validate()
-                print("Completed.")
-
-        except Exception as e:
-            print ( "Error: Problem with output file {}:\n{}".format(outfile, e) )
-
-
+        return result
 
     # ----------------------------------------
-    # clean up OCR, special char entities, and various errors/typos
-    def clean_up(self, content):
-
-        # Replace double/single quotes NOT in tags with HTML entity
-        regex1a = re.compile(r"(\")(?=[^>]*<)")
-        regex1b = re.compile(r"(\')(?=[^>]*<)")
-
-        # OCR: Replace LATIN SMALL LIGATURE FI with "fi"
-        regex2 = re.compile(r"(&#64257;)")
-
-        # OCR: Replace LATIN SMALL LIGATURE FL with "fl"
-        regex3 = re.compile(r"(&#64258;)")
-
-        # clean up xml text
-        content = regex1a.sub("&#34;", content)
-        content = regex1b.sub("&#39;", content)
-        content = regex2.sub("fi", content)
-        content = regex3.sub("fl", content)
-
-        # replace special unicode entities
-        content = content.replace("&#8216;", "&#39;")
-        content = content.replace("&#8217;", "&#39;")
-        content = content.replace("&#8220;", "&#34;")
-        content = content.replace("&#8221;", "&#34;")
-        content = content.replace("&#8211;", "-")
-        content = content.replace("&#8212;", "-")
-        content = content.replace("&#9632;", "")
-        content = content.replace("&#8226;", "-")
-
-        return content
+    # validate document against XSD schema (see paths.json)
+    def validate(self, xml_data):
+        validation = self.schema.validate(xml_data)
+        msg = 'VALID' if validation else 'NOT VALID'
+        print("XSD Validation: {}".format(msg))
+        # show validation errors
+        if len(self.schema.error_log):
+            print('\n-------------------\nERROR LOGS:')
+            print(self.schema.error_log.last_error)
+            print()
 
 
-# -- end of MetaDoc class --
+# -- end of Builder class --
 builder = XMLBuilder()

@@ -1,137 +1,91 @@
 # PDF Metadata Converter
+Simple tool to convert PDF document data into XML metadata using XSL templates.
 
 ##Overview
-Simple tool to convert PDF document data into XML metadata for the ACM Digital Library
+This tool can be used to extract text data from PDF files, filtered and exported to different formats, such as XML. Metadata extraction from PDF documents is stored in intermediate JSON files that can be exported to custom formats using XSL templates. Extraction requires index files that map raw text scraped from the PDF files to known metadata.
 
-##Workflow
+## Required Index Files
 
-### Preprocessing PDF data
+1. Base Metadata (JSON)
+   - Template: `base.json`
+   - General information about the conference proceeding.
+   - Sessions information
+2. Articles Metadata (CSV)
+   - Template: `articles.csv`
+   - CSV index of articles in the proceeding.
+3. File paths (JSON)
+   - Template: `paths.json`
+      
+## Extraction
 
-#### Add PDF article files
+Using the Tika library, the extractor module (`extractor.py`) extracts text from the PDF documents and maps them using the index data to any useful data extracted from the PDF files and writes the data to intermediate JSON files. All input and output paths are defined in the `paths.json` index file.
 
+#### Usage
 
-#### Create index CSV files to combine with PDF extraction
-Initial index files will map already existing metadata to raw text extracted from
-the PDF files using the Tika library. The header row of the CSV should contain the field names
-to go in the final metadata. The extractor (*extractor.py*) merges the CSV metadata with
-any useful data extracted from the PDF files and writes the data to files in *metadata* directory.
-
-For the ACM metadata, there are three index files to create:
-- Articles (*articles.csv*) TODO: (EndNote XML: *articles.xmk*)
-
-- Sessions (*sessions.csv*)
--- Format:
---- section_seq_no
---- section_type
---- section_title
---- section_page_from
-
-- Session Chairs (*session_chairs.csv*)
--- Format:
---- section_seq_no
---- person_id
---- author_profile_id
---- orcid_id
---- first_name
---- middle_name
---- last_name
---- suffix
---- affiliation
---- role
-
-#### Complete file path index and base XML metadata template
-- File paths index (*paths.json*)
-- General conference metadata XML template (*base.xml*)
-
-#### Process Session index files
-1. Session index (*sessions.csv*)
+`python main.py [FILEPATH paths.json] -[PHASE extract|update]`
 
 
-2. Session Chair index (*session_chairs.csv*)
+## Build
 
-
-#### Complete Article index files
-1. Article index (*articles.csv*)
-
-#### Extract and compile article and session index Data
-1. Run extractor '''python extractor.py [path to paths.json]'''
-
-
-#### Run XML builder to convert and merge JSON extraction files
+Data in intermediate metadata files can be exported to XML using the builder module (`build.py`)
 - Run *main.py* with the full path to *paths.json*.
 
+#### Usage
 
-
-2. **Dataset**
-
-## Proceedings Articles
+`python main.py  -[PHASE build]`
 
 
 
-## Requirements
+# Requirements
 
  - tqdm 4.31.1
 
 
 ## Usage
 
-```
-python main.py -h # prints usage help and configuration options
-```
+1. Print help and configuration options
+    ```
+    python main.py -h # prints usage 
+    ```
 
-1. Data Extractor Preprocessing
+2. Extract data from sources
 
-```
-python extractor.py <PATH file> # preprocess CSV and PDF data; converts to JSON metadata
+    ```
+    python main.py [FILEPATH paths.json] -build -bits -extract
+    ```
 
-```
+3. Build bridge metadata XML
 
-2. Data Extractor Preprocessing
+    ```
+    python main.py [FILEPATH paths.json] -update 
+    ```
 
-```
-python main.py <PATH file> # preprocess CSV and PDF data; converts to JSON metadata
-```
+4. Generate XML from templates
 
-3. Metadata Converter
+    ```
+    python main.py <path to paths.json> -build -bits
+    python main.py <path to paths.json> -build -datacite
+    python main.py <path to paths.json> -build -wordpress
+    ```
 
-```
-python main.py --mode train
-python main.py -h # to view configuration options
 
-```
+### Metadata format
 
-4. Test model
-
-```
-python main.py --mode test
-python main.py -h # to view configuration options
-```
-
-## Parameters
-
-```
-python main.py -h # prints usage help and configuration options
-```
-
-See Also: params.py for list of hyperparameters.
-
-## References
-
-[1] Du, Xinya, Junru Shao, and Claire Cardie. "Learning to ask: Neural question generation for reading comprehension." arXiv preprint arXiv:1705.00106 (2017).
-
-### ACM Reference Format
-
-<Index Terms>
+\<Index Terms\>
 	Categories/CCS 2012 Classification
-</Index Terms>
-<General Terms>...</General Terms>
-<Keywords>...<.Keywords>
-<References>
-[1] ...
-[2] ...
-...
-[n] ...
-</References>
+\</Index Terms><br>
+\<General Terms\>...
+\</General Terms\>
+<br>...<br>
+\<Keywords\>...\<.Keywords\>
+<br>...<br>
+\<References\>
+<br>
+[1] ...<br>
+[2] ...<br>
+...<br>
+[n] ...<br>
+\</References\>
 
 Example:
 

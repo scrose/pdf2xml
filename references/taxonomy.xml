@@ -1,0 +1,1478 @@
+<categories>
+  <category>
+    <cat_node></cat_node>
+    <name>Not Listed</name>
+  </category>
+  <category>
+    <cat_node>A.</cat_node>
+    <name>General Literature</name>
+  </category>
+  <category>
+    <cat_node>A.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>A.1</cat_node>
+    <name>Introductory and Survey</name>
+  </category>
+  <category>
+    <cat_node>A.2</cat_node>
+    <name>Reference (E.G., Dictionaries, Encyclopedias, Glossaries)</name>
+  </category>
+  <category>
+    <cat_node>A.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.</cat_node>
+    <name>Hardware</name>
+  </category>
+  <category>
+    <cat_node>B.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.1</cat_node>
+    <name>Control Structures and Microprogramming</name>
+  </category>
+  <category>
+    <cat_node>B.1.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.1.1</cat_node>
+    <name>Control Design Styles</name>
+  </category>
+  <category>
+    <cat_node>B.1.2</cat_node>
+    <name>Control Structure Performance Analysis and Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.1.3</cat_node>
+    <name>Control Structure Reliability, Testing, and Fault-Tolerance</name>
+  </category>
+  <category>
+    <cat_node>B.1.4</cat_node>
+    <name>Microprogram Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.1.5</cat_node>
+    <name>Microcode Applications</name>
+  </category>
+  <category>
+    <cat_node>B.1.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.2</cat_node>
+    <name>Arithmetic and Logic Structures</name>
+  </category>
+  <category>
+    <cat_node>B.2.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.2.1</cat_node>
+    <name>Design Styles</name>
+  </category>
+  <category>
+    <cat_node>B.2.2</cat_node>
+    <name>Performance Analysis and Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.2.3</cat_node>
+    <name>Reliability, Testing, and Fault-Tolerance</name>
+  </category>
+  <category>
+    <cat_node>B.2.4</cat_node>
+    <name>High-Speed Arithmetic</name>
+  </category>
+  <category>
+    <cat_node>B.2.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.3</cat_node>
+    <name>Memory Structures</name>
+  </category>
+  <category>
+    <cat_node>B.3.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.3.1</cat_node>
+    <name>Semiconductor Memories</name>
+  </category>
+  <category>
+    <cat_node>B.3.2</cat_node>
+    <name>Design Styles</name>
+  </category>
+  <category>
+    <cat_node>B.3.3</cat_node>
+    <name>Performance Analysis and Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.3.4</cat_node>
+    <name>Reliability, Testing, and Fault-Tolerance</name>
+  </category>
+  <category>
+    <cat_node>B.3.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.4</cat_node>
+    <name>Input/Output and Data Communications</name>
+  </category>
+  <category>
+    <cat_node>B.4.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.4.1</cat_node>
+    <name>Data Communications Devices</name>
+  </category>
+  <category>
+    <cat_node>B.4.2</cat_node>
+    <name>Input/Output Devices</name>
+  </category>
+  <category>
+    <cat_node>B.4.3</cat_node>
+    <name>Interconnections (Subsystems)</name>
+  </category>
+  <category>
+    <cat_node>B.4.4</cat_node>
+    <name>Performance Analysis and Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.4.5</cat_node>
+    <name>Reliability, Testing, and Fault-Tolerance</name>
+  </category>
+  <category>
+    <cat_node>B.4.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.5</cat_node>
+    <name>Register-Transfer-Level Implementation</name>
+  </category>
+  <category>
+    <cat_node>B.5.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.5.1</cat_node>
+    <name>Design</name>
+  </category>
+  <category>
+    <cat_node>B.5.2</cat_node>
+    <name>Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.5.3</cat_node>
+    <name>Reliability and Testing</name>
+  </category>
+  <category>
+    <cat_node>B.5.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.6</cat_node>
+    <name>Logic Design</name>
+  </category>
+  <category>
+    <cat_node>B.6.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.6.1</cat_node>
+    <name>Design Styles</name>
+  </category>
+  <category>
+    <cat_node>B.6.2</cat_node>
+    <name>Reliability and Testing</name>
+  </category>
+  <category>
+    <cat_node>B.6.3</cat_node>
+    <name>Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.6.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.7</cat_node>
+    <name>Integrated Circuits</name>
+  </category>
+  <category>
+    <cat_node>B.7.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.7.1</cat_node>
+    <name>Types and Design Styles</name>
+  </category>
+  <category>
+    <cat_node>B.7.2</cat_node>
+    <name>Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.7.3</cat_node>
+    <name>Reliability and Testing</name>
+  </category>
+  <category>
+    <cat_node>B.7.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.8</cat_node>
+    <name>Performance and Reliability</name>
+  </category>
+  <category>
+    <cat_node>B.8.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>B.8.1</cat_node>
+    <name>Reliability, Testing, and Fault-Tolerance</name>
+  </category>
+  <category>
+    <cat_node>B.8.2</cat_node>
+    <name>Performance Analysis and Design Aids</name>
+  </category>
+  <category>
+    <cat_node>B.8.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>B.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>C.</cat_node>
+    <name>Computer Systems Organization</name>
+  </category>
+  <category>
+    <cat_node>C.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>C.1</cat_node>
+    <name>Processor Architectures</name>
+  </category>
+  <category>
+    <cat_node>C.1.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>C.1.1</cat_node>
+    <name>Single Data Stream Architectures</name>
+  </category>
+  <category>
+    <cat_node>C.1.2</cat_node>
+    <name>Multiple Data Stream Architectures (Multiprocessors)</name>
+  </category>
+  <category>
+    <cat_node>C.1.3</cat_node>
+    <name>Other Architecture Styles</name>
+  </category>
+  <category>
+    <cat_node>C.1.4</cat_node>
+    <name>Parallel Architectures</name>
+  </category>
+  <category>
+    <cat_node>C.1.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>C.2</cat_node>
+    <name>Computer-Communication Networks</name>
+  </category>
+  <category>
+    <cat_node>C.2.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>C.2.1</cat_node>
+    <name>Network Architecture and Design</name>
+  </category>
+  <category>
+    <cat_node>C.2.2</cat_node>
+    <name>Network Protocols</name>
+  </category>
+  <category>
+    <cat_node>C.2.3</cat_node>
+    <name>Network Operations</name>
+  </category>
+  <category>
+    <cat_node>C.2.4</cat_node>
+    <name>Distributed Systems</name>
+  </category>
+  <category>
+    <cat_node>C.2.5</cat_node>
+    <name>Local and Wide-Area Networks</name>
+  </category>
+  <category>
+    <cat_node>C.2.6</cat_node>
+    <name>Internetworking</name>
+  </category>
+  <category>
+    <cat_node>C.2.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>C.3</cat_node>
+    <name>Special-Purpose and Application-Based Systems</name>
+  </category>
+  <category>
+    <cat_node>C.4</cat_node>
+    <name>Performance Of Systems</name>
+  </category>
+  <category>
+    <cat_node>C.5</cat_node>
+    <name>Computer System Implementation</name>
+  </category>
+  <category>
+    <cat_node>C.5.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>C.5.1</cat_node>
+    <name>Large and Medium (``Mainframe'') Computers</name>
+  </category>
+  <category>
+    <cat_node>C.5.2</cat_node>
+    <name>Minicomputers</name>
+  </category>
+  <category>
+    <cat_node>C.5.3</cat_node>
+    <name>Microcomputers</name>
+  </category>
+  <category>
+    <cat_node>C.5.4</cat_node>
+    <name>Vlsi Systems</name>
+  </category>
+  <category>
+    <cat_node>C.5.5</cat_node>
+    <name>Servers</name>
+  </category>
+  <category>
+    <cat_node>C.5.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>C.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>D.</cat_node>
+    <name>Software</name>
+  </category>
+  <category>
+    <cat_node>D.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>D.1</cat_node>
+    <name>Programming Techniques</name>
+  </category>
+  <category>
+    <cat_node>D.1.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>D.1.1</cat_node>
+    <name>Applicative (Functional) Programming</name>
+  </category>
+  <category>
+    <cat_node>D.1.2</cat_node>
+    <name>Automatic Programming</name>
+  </category>
+  <category>
+    <cat_node>D.1.3</cat_node>
+    <name>Concurrent Programming</name>
+  </category>
+  <category>
+    <cat_node>D.1.4</cat_node>
+    <name>Sequential Programming</name>
+  </category>
+  <category>
+    <cat_node>D.1.5</cat_node>
+    <name>Object-Oriented Programming</name>
+  </category>
+  <category>
+    <cat_node>D.1.6</cat_node>
+    <name>Logic Programming</name>
+  </category>
+  <category>
+    <cat_node>D.1.7</cat_node>
+    <name>Visual Programming</name>
+  </category>
+  <category>
+    <cat_node>D.1.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>D.2</cat_node>
+    <name>Software Engineering</name>
+  </category>
+  <category>
+    <cat_node>D.2.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>D.2.1</cat_node>
+    <name>Requirements/Specifications</name>
+  </category>
+  <category>
+    <cat_node>D.2.2</cat_node>
+    <name>Design Tools and Techniques</name>
+  </category>
+  <category>
+    <cat_node>D.2.3</cat_node>
+    <name>Coding Tools and Techniques</name>
+  </category>
+  <category>
+    <cat_node>D.2.4</cat_node>
+    <name>Software/Program Verification</name>
+  </category>
+  <category>
+    <cat_node>D.2.5</cat_node>
+    <name>Testing and Debugging</name>
+  </category>
+  <category>
+    <cat_node>D.2.6</cat_node>
+    <name>Programming Environments</name>
+  </category>
+  <category>
+    <cat_node>D.2.7</cat_node>
+    <name>Distribution, Maintenance, and Enhancement</name>
+  </category>
+  <category>
+    <cat_node>D.2.8</cat_node>
+    <name>Metrics</name>
+  </category>
+  <category>
+    <cat_node>D.2.9</cat_node>
+    <name>Management</name>
+  </category>
+  <category>
+    <cat_node>D.2.10</cat_node>
+    <name>Design</name>
+  </category>
+  <category>
+    <cat_node>D.2.11</cat_node>
+    <name>Software Architectures</name>
+  </category>
+  <category>
+    <cat_node>D.2.12</cat_node>
+    <name>Interoperability</name>
+  </category>
+  <category>
+    <cat_node>D.2.13</cat_node>
+    <name>Reusable Software</name>
+  </category>
+  <category>
+    <cat_node>D.2.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>D.3</cat_node>
+    <name>Programming Languages</name>
+  </category>
+  <category>
+    <cat_node>D.3.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>D.3.1</cat_node>
+    <name>Formal Definitions and Theory</name>
+  </category>
+  <category>
+    <cat_node>D.3.2</cat_node>
+    <name>Language Classifications</name>
+  </category>
+  <category>
+    <cat_node>D.3.3</cat_node>
+    <name>Language Constructs and Features</name>
+  </category>
+  <category>
+    <cat_node>D.3.4</cat_node>
+    <name>Processors</name>
+  </category>
+  <category>
+    <cat_node>D.3.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>D.4</cat_node>
+    <name>Operating Systems</name>
+  </category>
+  <category>
+    <cat_node>D.4.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>D.4.1</cat_node>
+    <name>Process Management</name>
+  </category>
+  <category>
+    <cat_node>D.4.2</cat_node>
+    <name>Storage Management</name>
+  </category>
+  <category>
+    <cat_node>D.4.3</cat_node>
+    <name>File Systems Management</name>
+  </category>
+  <category>
+    <cat_node>D.4.4</cat_node>
+    <name>Communications Management</name>
+  </category>
+  <category>
+    <cat_node>D.4.5</cat_node>
+    <name>Reliability</name>
+  </category>
+  <category>
+    <cat_node>D.4.6</cat_node>
+    <name>Security and Protection</name>
+  </category>
+  <category>
+    <cat_node>D.4.7</cat_node>
+    <name>Organization and Design</name>
+  </category>
+  <category>
+    <cat_node>D.4.8</cat_node>
+    <name>Performance</name>
+  </category>
+  <category>
+    <cat_node>D.4.9</cat_node>
+    <name>Systems Programs and Utilities</name>
+  </category>
+  <category>
+    <cat_node>D.4.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>D.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>E.</cat_node>
+    <name>Data</name>
+  </category>
+  <category>
+    <cat_node>E.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>E.1</cat_node>
+    <name>Data Structures</name>
+  </category>
+  <category>
+    <cat_node>E.2</cat_node>
+    <name>Data Storage Representations</name>
+  </category>
+  <category>
+    <cat_node>E.3</cat_node>
+    <name>Data Encryption</name>
+  </category>
+  <category>
+    <cat_node>E.4</cat_node>
+    <name>Coding and Information Theory</name>
+  </category>
+  <category>
+    <cat_node>E.5</cat_node>
+    <name>Files</name>
+  </category>
+  <category>
+    <cat_node>E.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>F.</cat_node>
+    <name>Theory Of Computation</name>
+  </category>
+  <category>
+    <cat_node>F.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>F.1</cat_node>
+    <name>Computation By Abstract Devices</name>
+  </category>
+  <category>
+    <cat_node>F.1.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>F.1.1</cat_node>
+    <name>Models Of Computation</name>
+  </category>
+  <category>
+    <cat_node>F.1.2</cat_node>
+    <name>Modes Of Computation</name>
+  </category>
+  <category>
+    <cat_node>F.1.3</cat_node>
+    <name>Complexity Measures and Classes</name>
+  </category>
+  <category>
+    <cat_node>F.1.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>F.2</cat_node>
+    <name>Analysis Of Algorithms and Problem Complexity</name>
+  </category>
+  <category>
+    <cat_node>F.2.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>F.2.1</cat_node>
+    <name>Numerical Algorithms and Problems</name>
+  </category>
+  <category>
+    <cat_node>F.2.2</cat_node>
+    <name>Nonnumerical Algorithms and Problems</name>
+  </category>
+  <category>
+    <cat_node>F.2.3</cat_node>
+    <name>Tradeoffs Between Complexity Measures</name>
+  </category>
+  <category>
+    <cat_node>F.2.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>F.3</cat_node>
+    <name>Logics and Meanings Of Programs</name>
+  </category>
+  <category>
+    <cat_node>F.3.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>F.3.1</cat_node>
+    <name>Specifying and Verifying and Reasoning About Programs</name>
+  </category>
+  <category>
+    <cat_node>F.3.2</cat_node>
+    <name>Semantics Of Programming Languages</name>
+  </category>
+  <category>
+    <cat_node>F.3.3</cat_node>
+    <name>Studies Of Program Constructs</name>
+  </category>
+  <category>
+    <cat_node>F.3.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>F.4</cat_node>
+    <name>Mathematical Logic and Formal Languages</name>
+  </category>
+  <category>
+    <cat_node>F.4.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>F.4.1</cat_node>
+    <name>Mathematical Logic</name>
+  </category>
+  <category>
+    <cat_node>F.4.2</cat_node>
+    <name>Grammars and Other Rewriting Systems</name>
+  </category>
+  <category>
+    <cat_node>F.4.3</cat_node>
+    <name>Formal Languages</name>
+  </category>
+  <category>
+    <cat_node>F.4.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>F.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>G.</cat_node>
+    <name>Mathematics Of Computing</name>
+  </category>
+  <category>
+    <cat_node>G.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>G.1</cat_node>
+    <name>Numerical Analysis</name>
+  </category>
+  <category>
+    <cat_node>G.1.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>G.1.1</cat_node>
+    <name>Interpolation</name>
+  </category>
+  <category>
+    <cat_node>G.1.2</cat_node>
+    <name>Approximation</name>
+  </category>
+  <category>
+    <cat_node>G.1.3</cat_node>
+    <name>Numerical Linear Algebra</name>
+  </category>
+  <category>
+    <cat_node>G.1.4</cat_node>
+    <name>Quadrature and Numerical Differentiation</name>
+  </category>
+  <category>
+    <cat_node>G.1.5</cat_node>
+    <name>Roots Of Nonlinear Equations</name>
+  </category>
+  <category>
+    <cat_node>G.1.6</cat_node>
+    <name>Optimization</name>
+  </category>
+  <category>
+    <cat_node>G.1.7</cat_node>
+    <name>Ordinary Differential Equations</name>
+  </category>
+  <category>
+    <cat_node>G.1.8</cat_node>
+    <name>Partial Differential Equations</name>
+  </category>
+  <category>
+    <cat_node>G.1.9</cat_node>
+    <name>Integral Equations</name>
+  </category>
+  <category>
+    <cat_node>G.1.10</cat_node>
+    <name>Applications</name>
+  </category>
+  <category>
+    <cat_node>G.1.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>G.2</cat_node>
+    <name>Discrete Mathematics</name>
+  </category>
+  <category>
+    <cat_node>G.2.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>G.2.1</cat_node>
+    <name>Combinatorics</name>
+  </category>
+  <category>
+    <cat_node>G.2.2</cat_node>
+    <name>Graph Theory</name>
+  </category>
+  <category>
+    <cat_node>G.2.3</cat_node>
+    <name>Applications</name>
+  </category>
+  <category>
+    <cat_node>G.2.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>G.3</cat_node>
+    <name>Probability and Statistics</name>
+  </category>
+  <category>
+    <cat_node>G.4</cat_node>
+    <name>Mathematical Software</name>
+  </category>
+  <category>
+    <cat_node>G.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>H.</cat_node>
+    <name>Information Systems</name>
+  </category>
+  <category>
+    <cat_node>H.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>H.1</cat_node>
+    <name>Models and Principles</name>
+  </category>
+  <category>
+    <cat_node>H.1.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>H.1.1</cat_node>
+    <name>Systems and Information Theory</name>
+  </category>
+  <category>
+    <cat_node>H.1.2</cat_node>
+    <name>User/Machine Systems</name>
+  </category>
+  <category>
+    <cat_node>H.1.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>H.2</cat_node>
+    <name>Database Management</name>
+  </category>
+  <category>
+    <cat_node>H.2.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>H.2.1</cat_node>
+    <name>Logical Design</name>
+  </category>
+  <category>
+    <cat_node>H.2.2</cat_node>
+    <name>Physical Design</name>
+  </category>
+  <category>
+    <cat_node>H.2.3</cat_node>
+    <name>Languages</name>
+  </category>
+  <category>
+    <cat_node>H.2.4</cat_node>
+    <name>Systems</name>
+  </category>
+  <category>
+    <cat_node>H.2.5</cat_node>
+    <name>Heterogeneous Databases</name>
+  </category>
+  <category>
+    <cat_node>H.2.6</cat_node>
+    <name>Database Machines</name>
+  </category>
+  <category>
+    <cat_node>H.2.7</cat_node>
+    <name>Database Administration</name>
+  </category>
+  <category>
+    <cat_node>H.2.8</cat_node>
+    <name>Database Applications</name>
+  </category>
+  <category>
+    <cat_node>H.2.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>H.3</cat_node>
+    <name>Information Storage and Retrieval</name>
+  </category>
+  <category>
+    <cat_node>H.3.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>H.3.1</cat_node>
+    <name>Content Analysis and Indexing</name>
+  </category>
+  <category>
+    <cat_node>H.3.2</cat_node>
+    <name>Information Storage</name>
+  </category>
+  <category>
+    <cat_node>H.3.3</cat_node>
+    <name>Information Search and Retrieval</name>
+  </category>
+  <category>
+    <cat_node>H.3.4</cat_node>
+    <name>Systems and Software</name>
+  </category>
+  <category>
+    <cat_node>H.3.5</cat_node>
+    <name>Online Information Services</name>
+  </category>
+  <category>
+    <cat_node>H.3.6</cat_node>
+    <name>Library Automation</name>
+  </category>
+  <category>
+    <cat_node>H.3.7</cat_node>
+    <name>Digital Libraries</name>
+  </category>
+  <category>
+    <cat_node>H.3.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>H.4</cat_node>
+    <name>Information Systems Applications</name>
+  </category>
+  <category>
+    <cat_node>H.4.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>H.4.1</cat_node>
+    <name>Office Automation</name>
+  </category>
+  <category>
+    <cat_node>H.4.2</cat_node>
+    <name>Types Of Systems</name>
+  </category>
+  <category>
+    <cat_node>H.4.3</cat_node>
+    <name>Communications Applications</name>
+  </category>
+  <category>
+    <cat_node>H.4.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>H.5</cat_node>
+    <name>Information Interfaces and Presentation (E.G., Hci)</name>
+  </category>
+  <category>
+    <cat_node>H.5.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>H.5.1</cat_node>
+    <name>Multimedia Information Systems</name>
+  </category>
+  <category>
+    <cat_node>H.5.2</cat_node>
+    <name>User Interfaces</name>
+  </category>
+  <category>
+    <cat_node>H.5.3</cat_node>
+    <name>Group and Organization Interfaces</name>
+  </category>
+  <category>
+    <cat_node>H.5.4</cat_node>
+    <name>Hypertext/Hypermedia</name>
+  </category>
+  <category>
+    <cat_node>H.5.5</cat_node>
+    <name>Sound and Music Computing</name>
+  </category>
+  <category>
+    <cat_node>H.5.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>H.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.</cat_node>
+    <name>Computing Methodologies</name>
+  </category>
+  <category>
+    <cat_node>I.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.1</cat_node>
+    <name>Symbolic and Algebraic Manipulation</name>
+  </category>
+  <category>
+    <cat_node>I.1.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.1.1</cat_node>
+    <name>Expressions and Their Representation</name>
+  </category>
+  <category>
+    <cat_node>I.1.2</cat_node>
+    <name>Algorithms</name>
+  </category>
+  <category>
+    <cat_node>I.1.3</cat_node>
+    <name>Languages and Systems</name>
+  </category>
+  <category>
+    <cat_node>I.1.4</cat_node>
+    <name>Applications</name>
+  </category>
+  <category>
+    <cat_node>I.1.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.2</cat_node>
+    <name>Artificial Intelligence</name>
+  </category>
+  <category>
+    <cat_node>I.2.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.2.1</cat_node>
+    <name>Applications and Expert Systems</name>
+  </category>
+  <category>
+    <cat_node>I.2.2</cat_node>
+    <name>Automatic Programming</name>
+  </category>
+  <category>
+    <cat_node>I.2.3</cat_node>
+    <name>Deduction and Theorem Proving</name>
+  </category>
+  <category>
+    <cat_node>I.2.4</cat_node>
+    <name>Knowledge Representation Formalisms and Methods</name>
+  </category>
+  <category>
+    <cat_node>I.2.5</cat_node>
+    <name>Programming Languages and Software</name>
+  </category>
+  <category>
+    <cat_node>I.2.6</cat_node>
+    <name>Learning</name>
+  </category>
+  <category>
+    <cat_node>I.2.7</cat_node>
+    <name>Natural Language Processing</name>
+  </category>
+  <category>
+    <cat_node>I.2.8</cat_node>
+    <name>Problem Solving, Control Methods, and Search</name>
+  </category>
+  <category>
+    <cat_node>I.2.9</cat_node>
+    <name>Robotics</name>
+  </category>
+  <category>
+    <cat_node>I.2.10</cat_node>
+    <name>Vision and Scene Understanding</name>
+  </category>
+  <category>
+    <cat_node>I.2.11</cat_node>
+    <name>Distributed Artificial Intelligence</name>
+  </category>
+  <category>
+    <cat_node>I.2.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.3</cat_node>
+    <name>Computer Graphics</name>
+  </category>
+  <category>
+    <cat_node>I.3.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.3.1</cat_node>
+    <name>Hardware Architecture</name>
+  </category>
+  <category>
+    <cat_node>I.3.2</cat_node>
+    <name>Graphics Systems</name>
+  </category>
+  <category>
+    <cat_node>I.3.3</cat_node>
+    <name>Picture/Image Generation</name>
+  </category>
+  <category>
+    <cat_node>I.3.4</cat_node>
+    <name>Graphics Utilities</name>
+  </category>
+  <category>
+    <cat_node>I.3.5</cat_node>
+    <name>Computational Geometry and Object Modeling</name>
+  </category>
+  <category>
+    <cat_node>I.3.6</cat_node>
+    <name>Methodology and Techniques</name>
+  </category>
+  <category>
+    <cat_node>I.3.7</cat_node>
+    <name>Three-Dimensional Graphics and Realism</name>
+  </category>
+  <category>
+    <cat_node>I.3.8</cat_node>
+    <name>Applications</name>
+  </category>
+  <category>
+    <cat_node>I.3.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.4</cat_node>
+    <name>Image Processing and Computer Vision</name>
+  </category>
+  <category>
+    <cat_node>I.4.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.4.1</cat_node>
+    <name>Digitization and Image Capture</name>
+  </category>
+  <category>
+    <cat_node>I.4.2</cat_node>
+    <name>Compression (Coding)</name>
+  </category>
+  <category>
+    <cat_node>I.4.3</cat_node>
+    <name>Enhancement</name>
+  </category>
+  <category>
+    <cat_node>I.4.4</cat_node>
+    <name>Restoration</name>
+  </category>
+  <category>
+    <cat_node>I.4.5</cat_node>
+    <name>Reconstruction</name>
+  </category>
+  <category>
+    <cat_node>I.4.6</cat_node>
+    <name>Segmentation</name>
+  </category>
+  <category>
+    <cat_node>I.4.7</cat_node>
+    <name>Feature Measurement</name>
+  </category>
+  <category>
+    <cat_node>I.4.8</cat_node>
+    <name>Scene Analysis</name>
+  </category>
+  <category>
+    <cat_node>I.4.9</cat_node>
+    <name>Applications</name>
+  </category>
+  <category>
+    <cat_node>I.4.10</cat_node>
+    <name>Image Representation</name>
+  </category>
+  <category>
+    <cat_node>I.4.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.5</cat_node>
+    <name>Pattern Recognition</name>
+  </category>
+  <category>
+    <cat_node>I.5.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.5.1</cat_node>
+    <name>Models</name>
+  </category>
+  <category>
+    <cat_node>I.5.2</cat_node>
+    <name>Design Methodology</name>
+  </category>
+  <category>
+    <cat_node>I.5.3</cat_node>
+    <name>Clustering</name>
+  </category>
+  <category>
+    <cat_node>I.5.4</cat_node>
+    <name>Applications</name>
+  </category>
+  <category>
+    <cat_node>I.5.5</cat_node>
+    <name>Implementation</name>
+  </category>
+  <category>
+    <cat_node>I.5.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.6</cat_node>
+    <name>Simulation and Modeling</name>
+  </category>
+  <category>
+    <cat_node>I.6.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.6.1</cat_node>
+    <name>Simulation Theory</name>
+  </category>
+  <category>
+    <cat_node>I.6.2</cat_node>
+    <name>Simulation Languages</name>
+  </category>
+  <category>
+    <cat_node>I.6.3</cat_node>
+    <name>Applications</name>
+  </category>
+  <category>
+    <cat_node>I.6.4</cat_node>
+    <name>Model Validation and Analysis</name>
+  </category>
+  <category>
+    <cat_node>I.6.5</cat_node>
+    <name>Model Development</name>
+  </category>
+  <category>
+    <cat_node>I.6.6</cat_node>
+    <name>Simulation Output Analysis</name>
+  </category>
+  <category>
+    <cat_node>I.6.7</cat_node>
+    <name>Simulation Support Systems</name>
+  </category>
+  <category>
+    <cat_node>I.6.8</cat_node>
+    <name>Types Of Simulation</name>
+  </category>
+  <category>
+    <cat_node>I.6.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.7</cat_node>
+    <name>Document and Text Processing</name>
+  </category>
+  <category>
+    <cat_node>I.7.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>I.7.1</cat_node>
+    <name>Document and Text Editing</name>
+  </category>
+  <category>
+    <cat_node>I.7.2</cat_node>
+    <name>Document Preparation</name>
+  </category>
+  <category>
+    <cat_node>I.7.3</cat_node>
+    <name>Index Generation</name>
+  </category>
+  <category>
+    <cat_node>I.7.4</cat_node>
+    <name>Electronic Publishing</name>
+  </category>
+  <category>
+    <cat_node>I.7.5</cat_node>
+    <name>Document Capture</name>
+  </category>
+  <category>
+    <cat_node>I.7.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>I.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>J.</cat_node>
+    <name>Computer Applications</name>
+  </category>
+  <category>
+    <cat_node>J.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>J.1</cat_node>
+    <name>Administrative Data Processing</name>
+  </category>
+  <category>
+    <cat_node>J.2</cat_node>
+    <name>Physical Sciences and Engineering</name>
+  </category>
+  <category>
+    <cat_node>J.3</cat_node>
+    <name>Life and Medical Sciences</name>
+  </category>
+  <category>
+    <cat_node>J.4</cat_node>
+    <name>Social and Behavioral Sciences</name>
+  </category>
+  <category>
+    <cat_node>J.5</cat_node>
+    <name>Arts and Humanities</name>
+  </category>
+  <category>
+    <cat_node>J.6</cat_node>
+    <name>Computer-Aided Engineering</name>
+  </category>
+  <category>
+    <cat_node>J.7</cat_node>
+    <name>Computers In Other Systems</name>
+  </category>
+  <category>
+    <cat_node>J.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>K.</cat_node>
+    <name>Computing Milieux</name>
+  </category>
+  <category>
+    <cat_node>K.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>K.1</cat_node>
+    <name>The Computer Industry</name>
+  </category>
+  <category>
+    <cat_node>K.2</cat_node>
+    <name>History Of Computing</name>
+  </category>
+  <category>
+    <cat_node>K.3</cat_node>
+    <name>Computers and Education</name>
+  </category>
+  <category>
+    <cat_node>K.3.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>K.3.1</cat_node>
+    <name>Computer Uses In Education</name>
+  </category>
+  <category>
+    <cat_node>K.3.2</cat_node>
+    <name>Computer and Information Science Education</name>
+  </category>
+  <category>
+    <cat_node>K.3.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>K.4</cat_node>
+    <name>Computers and Society</name>
+  </category>
+  <category>
+    <cat_node>K.4.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>K.4.1</cat_node>
+    <name>Public Policy Issues</name>
+  </category>
+  <category>
+    <cat_node>K.4.2</cat_node>
+    <name>Social Issues</name>
+  </category>
+  <category>
+    <cat_node>K.4.3</cat_node>
+    <name>Organizational Impacts</name>
+  </category>
+  <category>
+    <cat_node>K.4.4</cat_node>
+    <name>Electronic Commerce</name>
+  </category>
+  <category>
+    <cat_node>K.4.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>K.5</cat_node>
+    <name>Legal Aspects Of Computing</name>
+  </category>
+  <category>
+    <cat_node>K.5.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>K.5.1</cat_node>
+    <name>Hardware/Software Protection</name>
+  </category>
+  <category>
+    <cat_node>K.5.2</cat_node>
+    <name>Governmental Issues</name>
+  </category>
+  <category>
+    <cat_node>K.5.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>K.6</cat_node>
+    <name>Management Of Computing and Information Systems</name>
+  </category>
+  <category>
+    <cat_node>K.6.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>K.6.1</cat_node>
+    <name>Project and People Management</name>
+  </category>
+  <category>
+    <cat_node>K.6.2</cat_node>
+    <name>Installation Management</name>
+  </category>
+  <category>
+    <cat_node>K.6.3</cat_node>
+    <name>Software Management</name>
+  </category>
+  <category>
+    <cat_node>K.6.4</cat_node>
+    <name>System Management</name>
+  </category>
+  <category>
+    <cat_node>K.6.5</cat_node>
+    <name>Security and Protection</name>
+  </category>
+  <category>
+    <cat_node>K.6.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>K.7</cat_node>
+    <name>The Computing Profession</name>
+  </category>
+  <category>
+    <cat_node>K.7.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>K.7.1</cat_node>
+    <name>Occupations</name>
+  </category>
+  <category>
+    <cat_node>K.7.2</cat_node>
+    <name>Organizations</name>
+  </category>
+  <category>
+    <cat_node>K.7.3</cat_node>
+    <name>Testing, Certification, and Licensing</name>
+  </category>
+  <category>
+    <cat_node>K.7.4</cat_node>
+    <name>Professional Ethics</name>
+  </category>
+  <category>
+    <cat_node>K.7.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>K.8</cat_node>
+    <name>Personal Computing</name>
+  </category>
+  <category>
+    <cat_node>K.8.0</cat_node>
+    <name>General</name>
+  </category>
+  <category>
+    <cat_node>K.8.1</cat_node>
+    <name>Application Packages</name>
+  </category>
+  <category>
+    <cat_node>K.8.2</cat_node>
+    <name>Hardware</name>
+  </category>
+  <category>
+    <cat_node>K.8.3</cat_node>
+    <name>Management/Maintenance</name>
+  </category>
+  <category>
+    <cat_node>K.8.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+  <category>
+    <cat_node>K.m</cat_node>
+    <name>Miscellaneous</name>
+  </category>
+</categories>

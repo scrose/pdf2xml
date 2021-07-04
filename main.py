@@ -11,23 +11,20 @@ from params import params, Phases, Schema
 from builder import builder
 
 """
-===========================================
 Metadata Processor
-===========================================
+
 Converts PDF documents to XML metadata
  * Applies ACM DL XML Schema
  * Dependencies:
    - lxml XML toolkit
    - Tika (Apache)
-
-===========================================
+   
 """
 
 
 def main():
-    # ===============================================
     # EXTRACTION or UPDATE phases
-    # ===============================================
+
     if params.phase == Phases.EXTRACT or params.phase == Phases.UPDATE:
         # select input source (unprocessed or preprocessed)
         if params.phase == Phases.EXTRACT:
@@ -36,7 +33,7 @@ def main():
             input_source = params.get_files("txt", "output")
 
         # extract metadata from articles index CSV
-        articles_md = extractor.csv(params.get_path("articles", "index"), "id")
+        articles_md = extractor.csv(params.get_path("index", "input"), "id")
 
         # extract metadata from PDF articles (Tika) / Raw text
         issues = 0
@@ -53,9 +50,8 @@ def main():
 
         print('\nParsing errors/issues found: {}'.format(issues))
 
-    # ===============================================
     # BUILD phase
-    # ===============================================
+
     elif params.phase == Phases.BUILD or params.phase == Phases.PATCH:
 
         # get article metadata
@@ -68,7 +64,8 @@ def main():
             params.get_path('patches', 'output')
         )
 
-        # utils.save(builder.build(md_base), '/Users/boutrous/Workspace/Metadata/GI/2020/build/test.xml')
+        utils.save(builder.build(md_base), os.path.join(params.get_path("build", "output"), "wordpress_import.xml"))
+
         # Apply ACM schema (BITS format)
         if params.schema == Schema.BITS:
             # get ACM object ID
@@ -81,14 +78,14 @@ def main():
             # create root directory
             utils.mk_dir(output_path, root_dir)
             # create manifest
-            print("\n====\nGenerating manifest ... ")
-            xml_manifest = builder.transform(builder.build(md_base), params.get_path("manifest", "templates"))
+            print("\n\nGenerating manifest ... ")
+            xml_manifest = builder.transform(builder.build(md_base), params.paths['templates']['manifest'])
             utils.save(xml_manifest, os.path.join(output_path, root_dir, "manifest.xml"))
             # build base XML from metadata and apply XSLT
-            print("\n====\nGenerating base XML ... ")
+            print("\n\nGenerating base XML ... ")
             utils.mk_dir(output_path, root_dir, base_dir)
             utils.mk_dir(output_path, root_dir, base_dir, base_dir)
-            xml_base = builder.transform(builder.build(md_base), params.get_path("base", "templates"))
+            xml_base = builder.transform(builder.build(md_base), params.paths['templates']['base'])
             # Remove empty tags
             xml_base = builder.remove_empty(xml_base)
             builder.validate(xml_base)
@@ -101,28 +98,30 @@ def main():
                 copyfile(fm_src_path, fm_dst_path)
             # Generate article xml documents and validate
             for md_session in md_base['sessions']:
-                for md_article in md_session['articles']:
-                    print("\n====\nGenerating article {} ... ".format(md_article['doi']))
-                    article_doi = "{}.{}".format(base_id, md_article['doi'])
-                    # create article directory
-                    utils.mk_dir(output_path, root_dir, base_dir, article_doi)
-                    # attach base metadata fields to metadata
-                    md_article['conference'] = md_base['conference']
-                    md_article['publication'] = md_base['publication']
-                    # convert article metadata to XML
-                    xml_article = builder.transform(builder.build(md_article), params.get_path("article", "templates"))
-                    # Remove empty tags
-                    xml_article = builder.remove_empty(xml_article)
-                    # validate against schema
-                    builder.validate(xml_article)
-                    # save article output
-                    utils.save(xml_article,
-                               os.path.join(output_path, root_dir, base_dir, article_doi, article_doi + ".xml"))
-                    # save raw xml generated
-                    utils.save(builder.build(md_article), os.path.join(params.get_path("xml", "output"), article_doi + ".xml"))
-                    # DEBUG: create intermediate XML metadata file
-                    # xml_external = builder.transform(builder.build(md_base), params.get_path("external", "templates"))
-                    # utils.save(xml_external, os.path.join(params.get_path("output"), root_dir, article_doi + ".xml"))
+                if 'articles' in md_session:
+                    for md_article in md_session['articles']:
+                        print("\n\nGenerating article {} ... ".format(md_article['doi']))
+                        article_doi = "{}.{}".format(base_id, md_article['doi'])
+                        # create article directory
+                        utils.mk_dir(output_path, root_dir, base_dir, article_doi)
+                        # attach base metadata fields to metadata
+                        md_article['conference'] = md_base['conference']
+                        md_article['publication'] = md_base['publication']
+                        # convert article metadata to XML
+                        xml_article = builder.transform(builder.build(md_article), params.paths['templates']['article'])
+                        # Remove empty tags
+                        xml_article = builder.remove_empty(xml_article)
+                        # validate against schema
+                        builder.validate(xml_article)
+                        # save article output
+                        utils.save(xml_article,
+                                   os.path.join(output_path, root_dir, base_dir, article_doi, article_doi + ".xml"))
+                        # save raw xml generated
+                        utils.save(builder.build(md_article),
+                                   os.path.join(params.get_path("xml", "output"), article_doi + ".xml"))
+                        # DEBUG: create intermediate XML metadata file
+                        # xml_external = builder.transform(builder.build(md_base), params.paths.templates.external))
+                        # utils.save(xml_external, os.path.join(params.get_path("output"), root_dir, article_doi + ".xml"))
 
         # Apply DataCite schema
         elif params.schema == Schema.DATACITE:
@@ -138,13 +137,13 @@ def main():
                 # Apply patch (if exists)
                 md_article = utils.apply_patch(md_article_file, patches_path)
                 article_id = md_article['id']
-                print("\n====\nGenerating article {} ... ".format(article_id))
+                print("\n\nGenerating article {} ... ".format(article_id))
                 # attach base metadata fields to metadata
                 md_article['conference'] = md_base['conference']
                 md_article['publication'] = md_base['publication']
                 md_article['publisher'] = md_base['publisher']
                 # convert article metadata to XML
-                xml_article = builder.transform(builder.build(md_article), params.get_path("datacite", "templates"))
+                xml_article = builder.transform(builder.build(md_article), params.paths['templates']['datacite'])
                 # Remove empty tags
                 xml_article = builder.remove_empty(xml_article)
                 # validate against schema
@@ -168,8 +167,11 @@ def main():
             md_base['post_date'] = params.postdate
 
             # load Wordpress XML Export data
-            wp_export_xml = utils.parse("/Users/boutrous/Workspace/Metadata/GI/2020/input/index/WP_media_uploads.xml").getroot()
-            wp_index = {'post_parent': wp_export_xml.xpath('//wp:post_parent', namespaces={'wp': 'http://wordpress.org/export/1.2/'})[0].text}
+            wp_export_xml = utils.parse(
+                "/Users/boutrous/Workspace/Metadata/GI/2020/input/index/WP_media_uploads.xml").getroot()
+            wp_index = {'post_parent': wp_export_xml.xpath('//wp:post_parent',
+                                                           namespaces={'wp': 'http://wordpress.org/export/1.2/'})[
+                0].text}
             wp_posts = wp_export_xml.xpath('//item')
             for wp_post in wp_posts:
                 wp_post_name = wp_post.xpath('wp:post_name', namespaces={'wp': 'http://wordpress.org/export/1.2/'})
@@ -177,7 +179,7 @@ def main():
                 wp_index[wp_post_name[0].text] = wp_post_id[0].text
 
             # Include WP metadata
-            # deepcopy before data manipulation
+            # -- deepcopy before data manipulation
             md_base_indexed = deepcopy(md_base)
             md_base_indexed['wp_post_parent'] = wp_index['post_parent']
             for j, md_session in enumerate(md_base['sessions']):
@@ -187,8 +189,11 @@ def main():
                     md_base_indexed['sessions'][j]['articles'][k]['wp_post_name'] = article_id
 
             # convert json metadata -> xml
-            print("\n====\nGenerating WordPress XML ... ")
-            xml_base = builder.transform(builder.build(md_base_indexed), params.get_path("wordpress", "templates"))
+            print("\n\nGenerating WordPress XML ... ")
+            if not 'wordpress' in params.paths['templates']:
+                print('Wordpress template is missing.')
+                exit(1)
+            xml_base = builder.transform(builder.build(md_base_indexed), params.paths['templates']['wordpress'])
             # Remove empty tags
             xml_base = builder.remove_empty(xml_base)
             utils.save(builder.build(md_base_indexed), '/Users/boutrous/Workspace/Metadata/GI/2020/build/test.xml')

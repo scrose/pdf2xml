@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-===========================================
 Metadata Extractor
-===========================================
 
 Created on Tue Mar 12 22:24:07 2019
 
@@ -21,10 +19,9 @@ from tika import parser
 from params import params
 from regex import regex
 
+
 """
-===========================================
 Metadata Extractor Class
-===========================================
 """
 
 
@@ -32,20 +29,7 @@ class Extractor:
 
     def __init__(self):
         # header labels
-        self.csv_header = [
-            'order',
-            'id',
-            'session',
-            'title',
-            'authors',
-            'affiliations',
-            'pages',
-            'doi',
-            'filename',
-            'url',
-            'from',
-            'to'
-        ]
+        self.csv_header = params.csv['header']
         # get base metadata
         self.n_sessions = len(params.base['sessions'])
         # initialize logging tool
@@ -110,6 +94,8 @@ class Extractor:
     # ----------------------------------------
     def pdf(self, file):
         raw = parser.from_file(file)
+        print(raw["metadata"])
+        print(raw["content"])
         return self._clean_up(raw["content"])
 
     # ----------------------------------------
@@ -120,6 +106,11 @@ class Extractor:
     # - returns data structure
     # ----------------------------------------
     def merge(self, file_id, index_md, content):
+
+        # check that Index is provided in index metadata
+        if index_md is None:
+            print("Index metadata missing for \'{}\' in metadata.".format(file_id))
+            exit()
 
         # check that PDF file is indexed in index metadata
         if file_id not in index_md:
@@ -175,8 +166,8 @@ class Extractor:
             header_raw = header_raw.group(0).strip()
             # split text into fieldgroups by return and strip of empty tokens
             header = [self._clean_up(x) for x in re.split(r"(\\n|\n|\r)", header_raw) if x != '\n' and len(x) > 0]
-        else:
-            self.log("authors", "Empty header in PDF extraction")
+        # else:
+        #     self.log("authors", "Empty header in PDF extraction")
 
         # CSV Data
         # ---------
@@ -449,7 +440,7 @@ class Extractor:
         kws = []
         r_kws = regex.kws.search(content)
         if r_kws:
-            r_kws = r_kws.group(1)
+            r_kws = r_kws.group(2).strip()
             # remove newline hyphenation
             r_kws = regex.no_hyp.sub('', r_kws)
             # fix newlines and colon starts
@@ -601,7 +592,6 @@ class Extractor:
     # ----------------------------------------
     # log issues
     def log(self, ref_id, message, data=None):
-
         if data is not None:
             self.logger[ref_id].append("<{}> ---- {}".format(message, data))
         else:

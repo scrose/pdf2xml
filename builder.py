@@ -20,11 +20,11 @@ class XMLBuilder:
         if params.schema:
             print('Initializing builder schema...'.format(params.schema), end='')
             if params.schema == Schema.BITS:
-                self.schema = lxml.etree.XMLSchema(et.parse(params.get_path("bits", "schema")))
+                self.schema = lxml.etree.XMLSchema(et.parse(params.paths['schema']['bits']))
             elif params.schema == Schema.DATACITE:
-                self.schema = lxml.etree.XMLSchema(et.parse(params.get_path("datacite", "schema")))
+                self.schema = lxml.etree.XMLSchema(et.parse(params.paths['schema']['datacite']))
             elif params.schema == Schema.WORDPRESS:
-                self.schema = lxml.etree.XMLSchema(et.parse(params.get_path("wordpress", "schema")))
+                self.schema = lxml.etree.XMLSchema(et.parse(params.paths['schema']['wordpress']))
             print('done.')
 
     # ----------------------------------------

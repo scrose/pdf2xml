@@ -2,7 +2,7 @@
 Simple tool to convert PDF document data into XML metadata using XSL templates.
 
 ##Overview
-This tool can be used to extract text data from PDF files, filtered and exported to different formats, such as XML. Metadata extraction from PDF documents is stored in intermediate JSON files that can be exported to custom formats using XSL templates. Extraction requires index files that map raw text scraped from the PDF files to known metadata.
+Use this tool to extract unstructured text data from standard IEEE formatted papers (PDF files) to be filtered and exported to different formats, such as XML. Metadata extraction from PDF documents is stored in intermediate JSON files that can be exported to defined schemas using XSL templates. Extraction requires index files that map raw text scraped from the PDF files to known metadata.
 
 ## Required Index Files
 
@@ -18,7 +18,9 @@ This tool can be used to extract text data from PDF files, filtered and exported
       
 ## Extraction
 
-Using the Tika library, the extractor module (`extractor.py`) extracts text from the PDF documents and maps them using the index data to any useful data extracted from the PDF files and writes the data to intermediate JSON files. All input and output paths are defined in the `paths.json` index file.
+Using the Tika library, the extractor module (`extractor.py`) extracts text from the PDF documents and maps them 
+using the index data to any useful data extracted from the PDF files and writes the data to intermediate JSON files. 
+All input and output paths are defined in the `paths.json` index file.
 
 #### Usage
 
@@ -71,23 +73,7 @@ Data in intermediate metadata files can be exported to XML using the builder mod
 
 ### Metadata format
 
-\<Index Terms\>
-	Categories/CCS 2012 Classification
-\</Index Terms><br>
-\<General Terms\>...
-\</General Terms\>
-<br>...<br>
-\<Keywords\>...\<.Keywords\>
-<br>...<br>
-\<References\>
-<br>
-[1] ...<br>
-[2] ...<br>
-...<br>
-[n] ...<br>
-\</References\>
-
-Example:
+#### Example
 
 C.2.1. Wireless communication; C.2.0. [General]: Security and protection General Terms
 Security, Design

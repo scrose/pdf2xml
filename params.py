@@ -11,6 +11,8 @@ import sys
 import datetime
 import utils
 from enum import Enum
+import lxml.etree as et
+from pathlib import Path
 
 
 # Phase enumeration constants
@@ -44,6 +46,12 @@ class Parameters:
         self.empty_nodes = ['self-uri']
         self.element_name = 'element'
 
+        # load configuration data
+        with open('config.json') as fp:
+            cf = json.load(fp)
+            self.paths = cf['paths']
+            self.skos = et.parse(os.path.join(Path(__file__).parent, cf['paths']['taxonomy']['CCS2012'])).getroot()
+            self.csv = cf['csv']
         try:
 
             # --------- parse command line input ---------
@@ -52,16 +60,19 @@ class Parameters:
                 if sys.argv[1]:
                     with open(sys.argv[1]) as fp:
                         print('Parsing paths file:', sys.argv[1])
-                        self.paths = json.load(fp)
+                        user_paths = json.load(fp)
+                        self.paths.update(user_paths)
                         # load base settings file
                         self.base = utils.load_json(self.get_path('base', 'metadata'))
                     # create directories for output files if does not exist
-                    if not os.path.isdir(self.paths['metadata']['articles']):
-                        os.mkdir(self.paths['metadata']['articles'])
+                    article_path = os.path.join(self.paths['root'], self.paths['metadata']['articles'])
+                    if not os.path.isdir(article_path):
+                        os.makedirs(article_path)
                     for path in self.paths['output'].values():
-                        if not os.path.isdir(path):
+                        output_path = os.path.join(self.paths['root'], path)
+                        if not os.path.isdir(output_path):
                             print("Creating new directory at {}".format(path))
-                            os.mkdir(path)
+                            os.makedirs(output_path)
                 else:
                     print("Path file (paths.json) is not specified.")
                     exit(1)
@@ -110,7 +121,8 @@ class Parameters:
             print("Path keys {} {} not found. Please check paths.json.".format(sub_dir, parent_dir))
             return
         else:
-            return self.paths[parent_dir][sub_dir] if parent_dir is not None else self.paths[sub_dir]
+            return os.path.join(self.paths['root'], self.paths[parent_dir][sub_dir]) \
+                if parent_dir is not None else os.path.join(self.paths['root'], self.paths[sub_dir])
 
     # --------------------------------------
     # Get multiple files from

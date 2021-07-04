@@ -1,0 +1,37 @@
+{
+  "csv": {
+    "header": [
+            "order",
+            "id",
+            "session",
+            "title",
+            "authors",
+            "affiliations",
+            "pages",
+            "doi",
+            "filename",
+            "url",
+            "from",
+            "to"
+        ]
+  },
+  "paths": {
+    "schema": {
+      "bits": "schemas/BITS-2.0-XSD/BITS-book2.xsd",
+      "datacite": "schemas/datacite_schema.xsd",
+      "wordpress": "schemas/wordpress_rss_import.xsd"
+    },
+    "templates": {
+      "base": "templates/base.xsl",
+      "article": "templates/article.xsl",
+      "manifest": "templates/manifest.xsl",
+      "external": "templates/external.xsl",
+      "wordpress": "templates/wordpress.xsl",
+      "datacite": "templates/datacite.xsl"
+    },
+    "taxonomy": {
+      "acm": "references/taxonomy.xml",
+      "CCS2012": "references/CCS2012_taxonomy.xml"
+    }
+  }
+}

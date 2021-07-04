@@ -5,6 +5,7 @@
 Utilities
 ===========================================
 """
+
 import os
 import re
 import json
@@ -162,8 +163,16 @@ def mk_dir(path, *subdir):
 # --------------------------------------
 # get metadata
 def load_json(path):
-    with open(path) as fp:
-        return json.load(fp)
+    if os.path.isfile(path):
+        with open(path) as fp:
+            try:
+                return json.load(fp)
+            except:
+                print('JSON error found in {}.'.format(path))
+                exit(1)
+    else:
+        print('File {} does not exist.'.format(path))
+        exit(1)
 
 
 # ----------------------------------------

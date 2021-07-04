@@ -14,7 +14,7 @@ class CCS:
 
     def __init__(self):
         # load ACM classification categories
-        self.skos = et.parse(params.get_path("CCS2012", "taxonomy")).getroot()
+        self.skos = et.parse(params.paths['taxonomy']['CCS2012']).getroot()
         # CCS2012 taxonomy namespace mapping
         self.nsmap = {
             'skos': 'http://www.w3.org/2004/02/skos/core#',
@@ -23,7 +23,7 @@ class CCS:
         # get list of top concepts
         self.valid_top_concepts = \
             self.skos.xpath('//skos:ConceptScheme/skos:hasTopConcept/@rdf:resource', namespaces=self.nsmap)
-        self.cat_index = et.parse(params.get_path("acm", "taxonomy")).getroot()
+        self.cat_index = et.parse(params.paths['taxonomy']['acm']).getroot()
         self.logger = []
 
     def lookup(self, concepts):
@@ -81,7 +81,7 @@ class CCS:
 
         # Find possible node paths from bottom to top concepts
         for bottom_concept_id in bottom_concept_ids:
-            concept_path = self.get_path(top_concept_id, [bottom_concept_id])
+            concept_path = self.get_concept_path(top_concept_id, [bottom_concept_id])
             if concept_path:
                 # Get path description
                 concept_path_desc = []
@@ -95,7 +95,7 @@ class CCS:
 
     # --------------------------------------------
     # DFS concept paths from current concept to top concept
-    def get_path(self, top_concept_id, concept_path):
+    def get_concept_path(self, top_concept_id, concept_path):
         if concept_path is None or len(concept_path) == 0:
             return None
         # front item is current ID
@@ -113,7 +113,7 @@ class CCS:
         for broader_concept_id in broader_concept_ids:
             test_path = [broader_concept_id] + concept_path
             self.log("Testing path: {}".format(test_path))
-            test_result = self.get_path(top_concept_id, test_path)
+            test_result = self.get_concept_path(top_concept_id, test_path)
             self.log("Result: {}".format(test_result))
             if test_result:
                 return test_result

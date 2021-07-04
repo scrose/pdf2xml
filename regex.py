@@ -57,19 +57,19 @@ class Regex:
         # select text above abstract
         self.above_abstract = re.compile(r"^((.|\n)*?)(?=^abstract)", re.IGNORECASE | re.MULTILINE)
         # select text below abstract
-        self.below_abstract = re.compile(r"(^\s?abstract\n?)([\s\S]*)", re.IGNORECASE | re.MULTILINE)
+        self.below_abstract = re.compile(r"(^\s?======abstract-start======\n?)([\s\S]*)", re.IGNORECASE | re.MULTILINE)
         # abstract between strings
-        self.select_abstract = re.compile(r"(^\s?abstract\n?)([\s\S]*?)(?=^\d?\d?\s?\bIntroduction\b\n|^\bCategories and Subject Descriptors\b)", re.IGNORECASE | re.MULTILINE)
+        self.select_abstract = re.compile(r"(^\s?======abstract-start======\n)([\s\S]*?)(?=^\s======abstract-end======\n)", re.IGNORECASE | re.MULTILINE)
         # remove numeration
         self.rmv_num = re.compile(r"(\.[ ]\d)")
 
         # ======== Keywords =========
         # select keywords
-        self.kws = re.compile(r"""(?<=keywords)(:?(.|\n)*?)(?=\.|index terms:?|introduction|[1])""", re.IGNORECASE)
+        self.kws = re.compile(r"(^\s?======keywords-start======\n?)([\s\S]*)(?=^\s?======keywords-end======\n)", re.IGNORECASE | re.MULTILINE)
 
         # ======== References =========
         # get content below 'References' title
-        self.ref_below = re.compile(r"(^\d?\d?\s?reference\n?)([\s\S]*)", re.IGNORECASE | re.MULTILINE)
+        self.ref_below = re.compile(r"(^\s?======references-start======\n?)([\s\S]*)", re.IGNORECASE | re.MULTILINE)
         # match [reference numbers]
         self.ref_numbers = re.compile(r"(\[)([0-9]+)(\])")
         # partition -> split reference string into references list
@@ -95,7 +95,7 @@ class Regex:
         # match ACM CCS 2012 concepts
         self.ccs_group_split = re.compile(r"""(, |; |\u2022)""")
         self.ccs_concept_split = re.compile(r"""(—|\u2012|\u2013|\u2014|\u2015|\u2192|:|\n|\*)( ?)(?=[A-Za-z])""")
-        self.ccs = re.compile(r"""(ccs concepts:?|index terms:?)((.|\n)*?)(([1]\s*)?introduction|([1]\s*)?keywords|([\*]\s*)?e-?mail)""", re.IGNORECASE)
+        self.ccs = re.compile(r"""(^\s?======index-start======)([\s\S]*?)(?=^\s======index-end======)""", re.IGNORECASE | re.MULTILINE)
 
 
 # instantiate paths

@@ -1,97 +1,65 @@
 # PDF Metadata Converter
-Simple tool to convert PDF document data into XML metadata using XSL templates.
 
-##Overview
-Use this tool to extract unstructured text data from standard IEEE formatted papers (PDF files) to be filtered and exported to different formats, such as XML. Metadata extraction from PDF documents is stored in intermediate JSON files that can be exported to defined schemas using XSL templates. Extraction requires index files that map raw text scraped from the PDF files to known metadata.
+Tool to extract and convert PDF document data into XML metadata that can be restructured using XSL templates.
 
-## Required Index Files
+## Overview
 
-1. Base Metadata (JSON)
-   - Template: `base.json`
-   - General information about the conference proceeding.
-   - Sessions information
-2. Articles Metadata (CSV)
-   - Template: `articles.csv`
-   - CSV index of articles in the proceeding.
-3. File paths (JSON)
-   - Template: `paths.json`
-      
-## Extraction
+Use this tool to extract unstructured text data from standard IEEE formatted conference papers (PDF files) to be filtered and exported to different formats, such as BITS or WordPress XML data. Metadata extraction from PDF documents is stored in intermediate JSON and XML files that can be exported to defined schemas using XSL templates. Extraction requires index files that map raw text scraped from the PDF files to known metadata.
 
-Using the Tika library, the extractor module (`extractor.py`) extracts text from the PDF documents and maps them 
-using the index data to any useful data extracted from the PDF files and writes the data to intermediate JSON files. 
+## Input Index Files
+
+In addition to the PDF documents to be extracted, three different input index files are required to use this tool. Example index files can be found in the `input` folder.
+
+1. `paths.json`: Provides paths to the PDF articles, the output paths, as well as `base.json` and `articles.csv`. Use the template provided in the source root.
+2. `base.json`: Base Metadata (JSON) to provide general information about the conference proceeding and sessions.
+3. `articles.csv`: Articles Metadata (CSV) to provide an index of articles, authors and affiliations in the proceeding.
+
+
+## Extractor Tool
+
+Using the Tika library, the extractor module (`extractor.py`) extracts text from the PDF documents and maps them
+using the index data to any useful data extracted from the PDF files and writes the data to intermediate JSON files.
 All input and output paths are defined in the `paths.json` index file.
 
-#### Usage
+The following folders are generated for saved output. The output paths are defined in `paths.json` configuration file.
 
-`python main.py [FILEPATH paths.json] -[PHASE extract|update]`
+1. Extraction
+   - `articles`: JSON metadata files generated for each PDF article.
+   - `xml`: XML metadata files generated for each PDF article.
+   - `logs`: Error logs for issues found during extraction.
+   - `patches`: Overwrite the generated metadata by making updated copies of JSON metadata files here.
+   - `txt`: The raw text generated from the PDF extraction.
 
+### Usage
 
-## Build
+`python main.py [FILEPATH paths.json] -extract`
 
-Data in intermediate metadata files can be exported to XML using the builder module (`build.py`)
-- Run *main.py* with the full path to *paths.json*.
+## Updater Tool
 
-#### Usage
+Raw extracted data can be edited and updated by running the update tool. Edit the raw text directly and run the updater to regenerate the JSON metadata files. Alternatively, edit the
 
-`python main.py  -[PHASE build]`
+### Usage
 
+```
+python main.py [FILEPATH paths.json] -update
+```
 
+## Builder Tool
 
-# Requirements
+Data in intermediate metadata files generated through extraction can be exported to XML using the builder module (`build.py`). This module has three defined schema options.
 
- - tqdm 4.31.1
+### Available Schemas
 
+The following schemas are available, however this package can be extended to include other schemas using an XSL stylesheet and a valid XSD schema definition for validation.
 
-## Usage
+1.  [BITS - Book Interchange Tag Set: JATS Extension] (https://jats.nlm.nih.gov/extensions/bits/) Generates XML metadata for the ACM proceeding Digital Library using BITS schema.. The intent of the BITS is to provide a common format in which publishers and archives can exchange book content, including book parts such as chapters. The Suite provides a set of XML schema modules that define elements and attributes for describing the textual and graphical content of books and book components as well as a package for book part interchange.
+2.  [DataCite - Metadata for DOIs] (https://schema.datacite.org/) Generates DataCite metadata XML files for each article. The DataCite Metadata Schema is a list of core metadata properties chosen for an accurate and consistent identification of a resource for citation and retrieval purposes, along with recommended use instructions.
+2.  [WordPress - Importer XML Schema] (https://wordpress.org/support/article/importing-content/) Generates WordPress import XML from extracted data. Using the WordPress Import tool, you can import content into your site using this schema option.
 
-1. Print help and configuration options
-    ```
-    python main.py -h # prints usage 
-    ```
+### Usage
 
-2. Extract data from sources
-
-    ```
-    python main.py [FILEPATH paths.json] -build -bits -extract
-    ```
-
-3. Build bridge metadata XML
-
-    ```
-    python main.py [FILEPATH paths.json] -update 
-    ```
-
-4. Generate XML from templates
-
-    ```
-    python main.py <path to paths.json> -build -bits
-    python main.py <path to paths.json> -build -datacite
-    python main.py <path to paths.json> -build -wordpress
-    ```
-
-
-### Metadata format
-
-#### Example
-
-C.2.1. Wireless communication; C.2.0. [General]: Security and protection General Terms
-Security, Design
-Internet of things,  link layer security,  key management, denial-of-service, denial-of-sleep
-[1] E. C. Alexander, C.-C. Chang, M. Shimabukuro, S. Franconeri, C. Collins, and M. Gleicher. Perceptual biases in font size as a data encoding. IEEE Trans. Vis. Comput. Graphics, 2017.
-[2] S. Bateman, C. Gutwin, and M. Nacenta. Seeing things in the clouds: The effect of visual features on tag cloud selections. In 19th ACM Conf. on Hypertext and Hypermedia, HT '08, pp. 193-202. ACM, 2008.
-[3] M. Bostock, V. Ogievetsky, and J. Heer. D3 data-driven documents. IEEE Trans. Vis. Comput. Graph., 17(12):2301-2309, 2011.
-
-
-## NOTES
-
-- CCS Concepts and user-defined keywords are required for all articles over two pages in length, and optional for one- and two-page articles (or abstracts).
-- The ACM Reference Format text is required for all articles over one page in length, and optional for one-page articles (abstracts).
-- Ensure to populate the <publisher_article_url> to include external links to articles.
-- Include front matter PDF and cover with the metadata file.
-- PUB4613 should be entered as the <publisher_id>, not the <publisher_code>. Here’s how that section looks in the corrected .xml:
-- The <article_publication_date> format is MM/DD/YYYY
-- The <concept_id> of 10010147.1001037 was an invalid CCS path. I believe the correct one is 10010147.10010371
-- The <fm_text> tag should not exceed the character limit.
-- The <page_from> and <page_to> tags need to be populated even if the proceedings is not paginated (e.g. for a paper with 5 pages, I simply entered ‘1’ in <page_from> and ‘5’ in <page_to>; for a paper with 9 pages I went with 1-9)
-- The <display_no> tag important if using article numbers (instead of page numbers). The <display_no> tag should be populated by ‘1’ for the first article, by ‘2’ for the second article, and so on.   
+```
+python main.py <path to paths.json> -build -bits
+python main.py <path to paths.json> -build -datacite
+python main.py <path to paths.json> -build -wordpress
+```

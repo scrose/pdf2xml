@@ -1,5 +1,0 @@
-include fitz/_config.h
-include changes.rst
-include README.md
-include PKG-INFO
-include COPYING

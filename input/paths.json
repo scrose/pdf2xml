@@ -1,0 +1,21 @@
+{
+  "root": "/Users/boutrous/Workspace/Metadata/GI/2021/",
+  "input": {
+    "articles": "input/compressed/",
+    "front-matter": "input/index/000_front-matter.pdf",
+    "index": "input/index/articles.csv"
+  },
+  "metadata": {
+      "base": "input/index/base.json",
+      "articles": "extraction/articles/",
+      "sessions": "extraction/sessions/sessions.json",
+      "session_chairs": "extraction/sessions/session_chairs.json"
+  },
+  "output": {
+    "build": "build/",
+    "txt": "extraction/txt/",
+    "xml": "extraction/xml/",
+    "patches": "extraction/patches/",
+    "logs": "extraction/logs/"
+  }
+}

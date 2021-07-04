@@ -1,0 +1,190 @@
+{
+ "conference": {
+   "series": "Graphics Interface (GI)",
+   "acronym": "GI '21",
+   "description": "Proceedings of Graphics Interface 2021",
+   "year": "2021",
+   "number": "47",
+   "code": "GI2021",
+   "url": "https://graphicsinterface.org",
+   "start_date": {
+     "month": "05",
+     "day": "27",
+     "year": "2021"
+     },
+   "end_date": {
+     "month": "05",
+     "day": "28",
+     "year": "2021"
+     },
+   "location": {
+     "city": "Virtual Event",
+     "country": "Canada"
+   },
+   "acceptance_rates": {
+     "total_submitted": "0",
+     "total_accepted": "0"
+   }
+ },
+ "chairs": [
+   {
+     "seq_no": "1",
+     "author_profile_id":"",
+     "orcid_id":"",
+     "first_name": "Ali",
+     "middle_name": "",
+     "last_name": "Mahdavi-Amiri",
+     "suffix": "",
+     "affiliation": "Simon Fraser University",
+     "role": "General Chair",
+     "bio": "",
+     "email": ""
+   },
+   {
+     "seq_no": "2",
+     "author_profile_id":"",
+     "orcid_id":"",
+     "first_name": "Manolis",
+     "middle_name": "",
+     "last_name": "Savva",
+     "suffix": "",
+     "affiliation": "Delft University of Technology",
+     "role": "Technical Program Chair",
+     "bio": "",
+     "email": ""
+   },
+   {
+     "seq_no": "3",
+     "author_profile_id":"",
+     "orcid_id":"",
+     "first_name": "Ahmed",
+     "middle_name": "Sabbir",
+     "last_name": "Arif",
+     "suffix": "",
+     "affiliation": "University of California",
+     "role": "Technical Program Chair",
+     "bio": "",
+     "email": ""
+   }
+ ],
+ "concepts": [
+   {
+     "id": "10002944.10011122.10002947",
+     "description": "General and reference~General conference proceedings",
+     "significance": "500"
+   },
+   {
+     "id": "10010147.1001037",
+     "description": "Computing methodologies~Computer graphics",
+     "significance": "500"
+   }
+ ],
+ "publication": {
+   "collection_id": "10.20380",
+   "collection": "ACM Other Conferences",
+   "acm_id": "10.20380",
+   "doi": "10.20380/3451271",
+   "series_id": "SERIES13496",
+   "code": "gi-mtg",
+   "book_type": "conference-proceedings",
+   "title": "Proceedings of Graphics Interface 2021",
+   "isbn": "",
+   "isbn13": "9780994786869",
+   "issn": "0713-5424",
+   "eissn": "",
+   "date": {
+     "month": "05",
+     "day": "28",
+     "year": "2021"
+   },
+   "pages": "0",
+   "abstract": [
+     "Graphics Interface is the oldest continuously-scheduled conference in computer graphics and human-computer interaction. The conference dates back to 1969, when it was the \"Canadian Man-Computer Communications Seminar\", changing its name in 1982 to Graphics Interface. Graphics Interface 2021 was the conference's 47th year, and was held virtually in Canada from May 27th - 28th, 2021."
+   ],
+   "copyright": {
+     "holder": "",
+     "year": "2021",
+     "license": "",
+     "licences-p": "All rights reserved. No part of the material protected by this copyright notice may be reproduced or utilized in any form, electronic or mechanical, including photocopying, recording, or by any information storage and retreival system, without written permission from the copyright owner."
+   },
+   "front_matter": {
+     "uri": "5555555.fm.pdf",
+     "description": "Front matter (President’s Welcoming Letter, Organization, Michael A. J. Sweeney Award 2021, Alain Fournier Award 2020, Bill Buxton Dissertation Award 2020, Achievement Award 2021, Achievement Award 2021)."
+   },
+   "back_matter": {
+     "uri": "",
+     "description": ""
+   },
+   "cover_images": {
+     "full_image": "",
+     "thumbnail": "",
+     "cover_non-retina": "",
+     "cover_retina": ""
+   }
+ },
+ "publisher": {
+   "id": "PUB7554",
+   "name": "Junction Publishing",
+   "city": "New Westminster",
+   "province": "British Columbia",
+   "country": "Canada",
+   "postal_code": "V3M 3Z9",
+   "publisher_contact": "Meghan Haley"
+ },
+ "sponsors": [
+   {
+     "id": "SP1879",
+     "name": "The Canadian Human-Computer Communications Society / Soci&#233;t&#233; Canadienne du Dialogue Humaine Machine (CHCCS/SCDHM)",
+     "abbr": "CHCCS/SCDHM"
+   },
+   {
+     "id": "SP3529",
+     "name": "Simon Fraser University",
+     "abbr": "SFU"
+   }
+ ],
+ "sessions": [
+   {
+     "label": "SESSION",
+     "title": "CHCCS/SCDHM 2020 Achievement Award Talks",
+     "doi": "",
+     "chairs": []
+   },
+   {
+     "label": "SESSION",
+     "title": "Collaboration, education, moderation",
+     "doi": "",
+     "chairs": []
+   },
+   {
+     "label": "SESSION",
+     "title": "Design in 2D & 3D",
+     "doi": "",
+     "chairs": []
+   },
+   {
+     "label": "SESSION",
+     "title": "Inputs & devices",
+     "doi": "",
+     "chairs": []
+   },
+   {
+     "label": "SESSION",
+     "title": "Image synthesis & analysis",
+     "doi": "",
+     "chairs": []
+   },
+   {
+     "label": "SESSION",
+     "title": "Visualisation & exploration",
+     "doi": "",
+     "chairs": []
+   },
+   {
+     "label": "SESSION",
+     "title": "VR, AR & 3D input",
+     "doi": "",
+     "chairs": []
+   }
+ ]
+}

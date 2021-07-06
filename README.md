@@ -4,7 +4,7 @@ Tool to extract and convert PDF document data into XML metadata that can be rest
 
 ## Overview
 
-Use this tool to extract unstructured text data from standard IEEE formatted conference papers (PDF files) to be filtered and exported to different formats, such as BITS or WordPress XML data. Metadata extraction from PDF documents is stored in intermediate JSON and XML files that can be exported to defined schemas using XSL templates. Extraction requires index files that map raw text scraped from the PDF files to known metadata.
+Use this tool to extract unstructured text data from standard IEEE formatted conference papers (PDF files) that can be filtered and exported to different formats, such as BITS or WordPress XML data. Metadata extraction from PDF documents is stored in intermediate JSON and XML files that can be exported to defined schemas using XSL templates. Extraction requires index files that map raw text scraped from the PDF files to known metadata.
 
 ## Input Index Files
 
